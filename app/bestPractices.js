@@ -7,30 +7,35 @@ if (typeof define !== 'function') { var define = require('amdefine')(module); }
  */
 define(function() {
   return {
-    globals : function() {
-      myObject = {
-        name : 'Jory'
-      };
+    globals: function() {
+      // myObject = {
+      //   name: 'Jory'
+      // };
 
-      return myObject;
+      // return myObject;
     },
 
-    functions : function(flag) {
-      if (flag) {
-        function getValue() { return 'a'; }
-      } else {
-        function getValue() { return 'b'; }
+    functions : function (flag) {
+      function getValue(letter) {
+        return letter;
       }
-
-      return getValue();
+      if (flag) {
+       return getValue('a');
+      } else {
+       return getValue('b');
+      }
     },
 
     parseInt : function(num) {
-      return parseInt(num);
+      return parseInt(num, 10);
     },
 
     identity : function(val1, val2) {
-
+      if(val1 === val2){
+        return true
+      }else{
+        return false
+      }
     }
   };
 });
