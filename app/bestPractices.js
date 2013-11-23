@@ -16,14 +16,17 @@ define(function() {
     },
 
     functions : function (flag) {
+      var answer;
       function getValue(letter) {
         return letter;
       }
+
       if (flag) {
-       return getValue('a');
+       answer = getValue('a');
       } else {
-       return getValue('b');
+       answer = getValue('b');
       }
+      return answer
     },
 
     parseInt : function(num) {
