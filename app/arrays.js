@@ -20,17 +20,12 @@ define(function() {
           arr.splice(i, 1);
          }
        }
-       return arr
+       return arr;
     },
 
-    removeWithoutCopy : function(arr, item) {
-        var arr2 = arr
-        for (var i = 0; i < arr.length; i++){
-         if(arr[i] === item){
-           arr.splice(i, 1);
-         }
-       }
-       return arr2
+    removeWithCopy : function(arr, item) {
+      var result = arr.filter( function(i){ return i != item});
+      return result;
     },
 
     append : function(arr, item) {
@@ -64,19 +59,48 @@ define(function() {
     },
 
     count : function(arr, item) {
-
+        var size = arr.filter(function(value) { return value === item }).length;
+        return size;
     },
 
     duplicates : function(arr) {
+      var dupe = [], 
+          hash = {}, 
+          result = [],
+          lastInt;
+      
+      for(var j = 0; j < arr.length; j++){
+        lastInt = arr.lastIndexOf(arr[j]);
 
+        if( lastInt !== -1 && lastInt !== j){
+          dupe.push(arr[j]);
+        }
+      }
+
+      for(var i = 0; i < dupe.length; i ++){
+        if( !hash.hasOwnProperty(dupe[i]) ){
+          hash [ dupe[i] ] = true;
+          result.push(dupe[i]);
+        }
+      }
+      return result;
     },
 
     square : function(arr) {
-
+      for(var i = 0; i < arr.length; i++){
+        arr[i] = arr[i] * arr[i];
+      }
+      return arr;
     },
 
     findAllOccurrences : function(arr, target) {
-
+      var result = [];
+      for( var i = 0; i < arr.length; i++){
+        if (arr[i] == target){
+          result.push(i);
+        }
+      }
+      return result;
     }
   };
 });
